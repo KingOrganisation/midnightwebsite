@@ -1,19 +1,27 @@
 import "./globals.css";
-import { ReactNode } from "react";
 
-export const metadata = {
+import type { Metadata } from "next";
+
+import Providers from "./providers";
+
+export const metadata: Metadata = {
   title: "MidNight",
   description: "MidNight Community"
 };
 
 export default function RootLayout({
-  children
-}: {
-  children: ReactNode;
-}) {
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+
   return (
     <html lang="it">
-      <body>{children}</body>
+      <body>
+        <Providers>
+          {children}
+        </Providers>
+      </body>
     </html>
   );
 }
